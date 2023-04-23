@@ -1,25 +1,25 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - '*'
+  release:
+    types:
+      - published
 
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+# env:
+#   REGISTRY: ghcr.io
+#   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push-image:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+    #   - name: Extract metadata (tags, labels) for Docker
+    #     id: meta
+    #     uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+    #     with:
+    #       images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       - name: echo
-        run: echo ${{steps.meta.outputs.tags}}
+        run: echo "hello"
     # permissions:
     #   contents: read
     #   packages: write
