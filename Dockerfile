@@ -13,11 +13,15 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libzip-dev \
-    cron
+    cron \
+    openssh-client
 
 # Install xdebug for code coverage
 RUN pecl install xdebug \
   && docker-php-ext-enable xdebug
+
+RUN pecl install redis \
+&&  docker-php-ext-enable redis
 
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
