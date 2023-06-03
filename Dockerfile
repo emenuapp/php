@@ -1,5 +1,5 @@
 # Build
-FROM php:8.1-fpm as build
+FROM php:8.2-fpm as build
 
 # Install system packages
 RUN apt-get update && apt-get install -y \
